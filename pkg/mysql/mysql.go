@@ -1,6 +1,9 @@
 package mysql
 
 import (
+	"bytes"
+	"go_learn_web/configs"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -9,7 +12,19 @@ var SqlConn any
 
 func InitMysqlDB() {
 	// 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
-	dsn := "root:icephoenix@tcp(172.17.0.1:3306)/go_learn_web1?charset=utf8mb4&parseTime=True&loc=Local"
+	var dsn_bt bytes.Buffer
+	dsn_bt.WriteString(configs.MysqlUser)
+	dsn_bt.WriteString(":")
+	dsn_bt.WriteString(configs.MysqlPass)
+	dsn_bt.WriteString("@tcp(")
+	dsn_bt.WriteString(configs.MysqlHost)
+	dsn_bt.WriteString(":")
+	dsn_bt.WriteString(configs.MysqlPort)
+	dsn_bt.WriteString(")/")
+	dsn_bt.WriteString(configs.MysqlDB)
+	dsn_bt.WriteString("?charset=utf8mb4&parseTime=True&loc=Local")
+	dsn := dsn_bt.String()
+
 	db, err := gorm.Open(mysql.New(mysql.Config{
 		DSN:                       dsn,
 		DefaultStringSize:         256,  // string 类型字段的默认长度
@@ -23,5 +38,8 @@ func InitMysqlDB() {
 	}
 
 	SqlConn, err = db.DB()
+	if err != nil {
+		panic(err.Error())
+	}
 
 }
