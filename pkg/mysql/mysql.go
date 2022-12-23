@@ -2,13 +2,14 @@ package mysql
 
 import (
 	"bytes"
+	"database/sql"
 	"go_learn_web/configs"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-var SqlConn any
+var SqlConn *sql.DB
 
 func InitMysqlDB() {
 	// 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
