@@ -14,6 +14,6 @@ const (
 	RedisPass = ""
 
 	MongoHost = BaseHost
-	MongoPort = "27071"
+	MongoPort = "27017"
 	MongoDB   = "learn"
 )
