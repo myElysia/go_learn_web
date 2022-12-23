@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	FACTORY_INFO_COLL       string = "factoryInfo"
+	FACTORY_INFO_COLL       string = "bookInfo"
 	FACTORY_DATA_COLL       string = "factoryData"
 	FACTORY_DATA_COUNT_COLL string = "factoryDataCount"
 )
@@ -19,7 +19,7 @@ var FactoryInfoColl *mongo.Collection
 var FactoryDataColl *mongo.Collection
 var FactoryDataCountColl *mongo.Collection
 
-func init() {
+func InitMongo() {
 	// 设置客户端连接配置
 	clientOptions := options.Client().ApplyURI("mongodb://" + configs.MongoHost + ":" + configs.MongoPort)
 
