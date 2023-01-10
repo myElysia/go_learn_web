@@ -1,19 +1,22 @@
 package configs
 
 const (
-	BaseHost = "localhost"
+	BaseHost = "127.0.0.1"
 
 	MysqlHost = BaseHost
 	MysqlPort = "3306"
-	MysqlUser = "root"
-	MysqlPass = "123456"
-	MysqlDB   = "learn"
+	MysqlUser = "elysia"
+	MysqlPass = "like.phoenix"
+	MysqlDB   = "learndb"
 
 	RedisHost = BaseHost
 	RedisPort = "6379"
-	RedisPass = ""
+	RedisPass = "redis.elysia"
 
 	MongoHost = BaseHost
-	MongoPort = "27071"
-	MongoDB   = "learn"
+	MongoPort = "27017"
+	MongoDB   = "learndb"
+
+	LOG_FILE_PATH = "./logs"
+	LOG_FILE_NAME = "app.log"
 )
