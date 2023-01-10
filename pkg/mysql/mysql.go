@@ -1,6 +1,8 @@
 package mysql
 
 import (
+	log "github.com/sirupsen/logrus"
+
 	"bytes"
 	"database/sql"
 	"go_learn_web/configs"
@@ -11,7 +13,7 @@ import (
 
 var SqlConn *sql.DB
 
-func InitMysqlDB() {
+func Init() {
 	// 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
 	var dsn_bt bytes.Buffer
 	dsn_bt.WriteString(configs.MysqlUser)
@@ -35,12 +37,13 @@ func InitMysqlDB() {
 		SkipInitializeWithVersion: false,
 	}), &gorm.Config{})
 	if err != nil {
+		log.Panic(err.Error())
 		return
 	}
 
 	SqlConn, err = db.DB()
 	if err != nil {
-		panic(err.Error())
+		log.Panic(err.Error())
 	}
 
 }

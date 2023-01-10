@@ -1,6 +1,8 @@
 package mongo
 
 import (
+	log "github.com/sirupsen/logrus"
+
 	"context"
 	"go_learn_web/configs"
 
@@ -19,7 +21,7 @@ var FactoryInfoColl *mongo.Collection
 var FactoryDataColl *mongo.Collection
 var FactoryDataCountColl *mongo.Collection
 
-func InitMongo() {
+func Init() {
 	// 设置客户端连接配置
 	clientOptions := options.Client().ApplyURI("mongodb://" + configs.MongoHost + ":" + configs.MongoPort)
 
@@ -27,12 +29,12 @@ func InitMongo() {
 	var err error
 	mgo, err = mongo.Connect(context.Background(), clientOptions)
 	if err != nil {
-		panic(err.Error())
+		log.Panic(err.Error())
 	}
 
 	// 检查连接
 	if err := mgo.Ping(context.Background(), nil); err != nil {
-		panic(err.Error())
+		log.Panic(err.Error())
 	}
 
 	FactoryInfoColl = mgo.Database(configs.MongoDB).Collection(FACTORY_INFO_COLL)

@@ -1,6 +1,8 @@
 package redis
 
 import (
+	log "github.com/sirupsen/logrus"
+
 	"context"
 	"go_learn_web/configs"
 	"time"
@@ -10,7 +12,7 @@ import (
 
 var rdb *redis.Client
 
-func InitRedis() {
+func Init() {
 	rdb = redis.NewClient(&redis.Options{
 		Addr:     configs.RedisHost + ":" + configs.RedisPort,
 		Password: configs.RedisPass,
@@ -21,7 +23,6 @@ func InitRedis() {
 	defer cancel()
 	_, err := rdb.Ping(ctx).Result()
 	if err != nil {
-		panic(err.Error())
+		log.Panic(err.Error())
 	}
-	return
 }
