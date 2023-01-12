@@ -19,4 +19,7 @@ const (
 
 	LOG_FILE_PATH = "./logs"
 	LOG_FILE_NAME = "app.log"
+
+	GIN_RUN_HOST = "127.0.0.1"
+	GIN_RUN_PORT = "8080"
 )

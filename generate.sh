@@ -1,0 +1,1 @@
+go run ./pkg/gorm/gen/generate.go
