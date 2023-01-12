@@ -40,7 +40,7 @@ func GetGormDB() (db *gorm.DB) {
 	return
 }
 
-func InitMysqlDB() {
+func Init() {
 	db := GetGormDB()
 	var err error
 	if DB, err = db.DB(); err != nil {
