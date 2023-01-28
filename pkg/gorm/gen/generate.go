@@ -2,10 +2,11 @@ package main
 
 import (
 	"go_learn_web/pkg/mysql"
-	"gorm.io/gen"
 	"path"
 	"runtime"
 	"strings"
+
+	"gorm.io/gen"
 )
 
 /**
@@ -23,6 +24,7 @@ func main() {
 
 	db := mysql.GetGormDB()
 	g.UseDB(db)
+	// 根据表名和要生成的模块名称生成对应的gorm
 	g.ApplyBasic(g.GenerateModelAs("t_user", "User"))
 	g.Execute()
 }

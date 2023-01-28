@@ -2,15 +2,16 @@ package logs
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
-	log "github.com/sirupsen/logrus"
 	"go_learn_web/configs"
 	"os"
 	"path"
 	"runtime"
 	"strings"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
+	log "github.com/sirupsen/logrus"
 )
 
 /** 参考来源:
@@ -107,8 +108,8 @@ func LoggerToFile() gin.HandlerFunc {
 }
 
 func getFilePath() (fileName string) {
-	logFilePath := configs.LOG_FILE_PATH
-	logFileName := configs.LOG_FILE_NAME
+	logFilePath := configs.ConfigData.Log.Path
+	logFileName := configs.ConfigData.Log.Name
 	// 日志文件
 	fileName = path.Join(logFilePath, logFileName)
 	return

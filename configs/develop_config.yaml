@@ -1,0 +1,24 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: elysia
+  password: like.phoenix
+  database: learndb
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: redis.elysia
+
+mongodb:
+  host: 127.0.0.1
+  port: 27017
+  database: learndb
+
+log:
+  path: ./logs
+  name: app.log
+
+gin:
+  host: 127.0.0.1
+  port: 8080

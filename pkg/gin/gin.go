@@ -53,7 +53,7 @@ func Init() {
 	}
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	err := r.Run(configs.GIN_RUN_HOST + ":" + configs.GIN_RUN_PORT)
+	err := r.Run(configs.ConfigData.Gin.Host + ":" + configs.ConfigData.Gin.Post)
 	if err != nil {
 		log.Error(err.Error())
 		return

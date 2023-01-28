@@ -14,15 +14,15 @@ var DB *sql.DB
 func GetGormDB() (db *gorm.DB) {
 	// 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
 	var dsn_bt bytes.Buffer
-	dsn_bt.WriteString(configs.MysqlUser)
+	dsn_bt.WriteString(configs.ConfigData.Mysql.User)
 	dsn_bt.WriteString(":")
-	dsn_bt.WriteString(configs.MysqlPass)
+	dsn_bt.WriteString(configs.ConfigData.Mysql.Password)
 	dsn_bt.WriteString("@tcp(")
-	dsn_bt.WriteString(configs.MysqlHost)
+	dsn_bt.WriteString(configs.ConfigData.Mysql.Host)
 	dsn_bt.WriteString(":")
-	dsn_bt.WriteString(configs.MysqlPort)
+	dsn_bt.WriteString(configs.ConfigData.Mysql.Port)
 	dsn_bt.WriteString(")/")
-	dsn_bt.WriteString(configs.MysqlDB)
+	dsn_bt.WriteString(configs.ConfigData.Mysql.Database)
 	dsn_bt.WriteString("?charset=utf8mb4&parseTime=True&loc=Local")
 	dsn := dsn_bt.String()
 

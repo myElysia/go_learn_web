@@ -14,8 +14,8 @@ var rdb *redis.Client
 
 func Init() {
 	rdb = redis.NewClient(&redis.Options{
-		Addr:     configs.RedisHost + ":" + configs.RedisPort,
-		Password: configs.RedisPass,
+		Addr:     configs.ConfigData.Redis.Host + ":" + configs.ConfigData.Redis.Port,
+		Password: configs.ConfigData.Redis.Password,
 		DB:       0,
 		PoolSize: 100,
 	})
